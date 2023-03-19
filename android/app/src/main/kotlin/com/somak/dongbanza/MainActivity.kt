@@ -1,0 +1,6 @@
+package com.somak.dongbanza
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

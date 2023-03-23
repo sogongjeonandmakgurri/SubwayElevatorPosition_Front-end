@@ -96,7 +96,7 @@ class _RecommendSubwayStationState extends State<RecommendSubwayStation> {
                     // ),
                     // //navigator button
                     SizedBox(
-                      height: 25,
+                      height: 30,
                     ),
                     Row(
                       children: [
@@ -127,18 +127,21 @@ class _RecommendSubwayStationState extends State<RecommendSubwayStation> {
                           },
                           child:
                           Text('시작', style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),),
                           style: ElevatedButton.styleFrom(
-                              primary: Color(0xffDCCBEE), // 텍스트 버튼과 다르게 배경색 변경
+                              primary: Color(0xffD7D7FD), // 텍스트 버튼과 다르게 배경색 변경
                               minimumSize: Size(120,60),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-
+                                borderRadius: BorderRadius.circular(30.0),
                               ),
-                              elevation: 0.0),
+                              elevation: 0.0,
+                              side: BorderSide(
+                                color: Colors.black,
+                                width: 2,
+                              )),
                           //child: HighLightedTextt('시작', color: Color(0xff946CEE),fontSize: 20),
 
                           //icon: Image.asset("assets/SubwayEle.png"),
@@ -203,8 +206,8 @@ Future<List<dynamic>> getPosition() async {
   });
    Map data = { 'lat' : currentPosition.latitude,
     'lng' : currentPosition.longitude};
-  //Map data = { 'lat' : 37.49464868076315,
-    //'lng' : 126.95864607740343 };  // 숭실대입구 근처
+  // Map data = { 'lat' : 37.49464868076315,
+  //   'lng' : 126.95864607740343 };  // 숭실대입구 근처
 
   var body = json.encode(data);
 

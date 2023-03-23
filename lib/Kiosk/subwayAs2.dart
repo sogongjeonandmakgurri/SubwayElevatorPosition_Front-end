@@ -24,21 +24,22 @@ class _SubwayAssistantState extends State<SubwayAssistant2> {
     return Scaffold(
         appBar: AppBar(
           leading: BackButton(
-            color: Colors.white,
+            color: Colors.black,
           ),
-          backgroundColor:Color(0xffDCCBEE),
+          backgroundColor:Color(0xffD7D7FD),
           title: Text(
             // 앱 이름 수정
             '역에서 가까운 엘리베이터 위치',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
         body: SingleChildScrollView(
         child:Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
@@ -54,7 +55,11 @@ class _SubwayAssistantState extends State<SubwayAssistant2> {
                     return Container(
                       child:
                       Column(children: [
+
                         HighLightedText('${widget.innerElevator[index]['next_sub_name']}'+' 방면', color: Color(colors[widget.line]), fontSize: 18),
+                        SizedBox(
+                          height: 7,
+                        ),
                         // Text(
                         //   //'남성 방면',
                         //   "${widget.innerElevator[index]['next_sub_name']}"+" 방면",
@@ -90,7 +95,7 @@ class _SubwayAssistantState extends State<SubwayAssistant2> {
                           ),
                         ),
                         SizedBox(
-                          height: 25,
+                          height: 30,
 
                         ),
                       ]),
@@ -102,27 +107,21 @@ class _SubwayAssistantState extends State<SubwayAssistant2> {
 
             ),
                 if(widget.outerElevator.isNotEmpty)
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:[HighLightedText('지상 엘리베이터 위치 안내', color: Color(colors[widget.line]), fontSize: 16),
+                    SizedBox(
+                      height: 7,
+                    ),
+                    ]
 
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child:
-                    HighLightedText('지상 엘리베이터 위치 안내', color: Color(colors[widget.line]), fontSize: 16),
-                    // Text(
-                    //   '지상 엘리베이터 위치 안내',
-                    //   style: TextStyle(
-                    //       fontWeight: FontWeight.bold,
-                    //       fontSize: 20,
-                    //     color: Colors.transparent, // Step 2 SEE HERE
-                    //     shadows: [Shadow(offset: Offset(0, -5), color: Colors.black)],
-                    //     decoration: TextDecoration.underline,
-                    //     decorationStyle: TextDecorationStyle.dashed,
-                    //     decorationColor: Color(colors[widget.line]),
-                    //       //color: Colors.red
-                    //   ),
-                    //   textAlign: TextAlign.center,
-                    //
-                    // ),
                   ),
+
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.9,
+                  //   child:
+                  //   HighLightedText('지상 엘리베이터 위치 안내', color: Color(colors[widget.line]), fontSize: 16),
+                  //),
 
                 // if(widget.outerElevator.isNotEmpty)
                 //   SizedBox(

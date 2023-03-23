@@ -27,16 +27,16 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.white,
+          color: Colors.black,
         ),
-        backgroundColor: Color(0xffDCCBEE),
+        backgroundColor: Color(0xffD7D7FD),
         title: Text(
           // 앱 이름 수정
           '역에서 가까운 엘레베이터 위치',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -55,13 +55,14 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
               Column(children: [
 
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
+                  width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
                     '현재 위치',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      color: Color(0xff595B5C),
+                      fontSize: 20,
+                      //color: Color(0xff595B5C),
+                      color: Colors.black
                     ),
                       textAlign: TextAlign.center
                   ),
@@ -87,6 +88,10 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Spacer(flex: 2),
+                            SizedBox(
+                              height: 27,
+                            ),
                             Text(
                               "${widget.subwaySt[widget.index]['sub_name']}",  // 숭실대학교
                               style: TextStyle(
@@ -103,43 +108,42 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
-                            )
+                            ),
+                            // SizedBox(
+                            //   height: 180,
+                            // ),
+                            Spacer(flex: 2),
+                            Text('이(가) 맞습니까?',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  //color: Color(0xff595B5C),
+                                  color: Colors.black,
+                                ),
+                                textAlign: TextAlign.center,
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
+                    //width: MediaQuery.of(context).size.width * 0.9,
+
                   ),
                 ]),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
-                  child: Text('이(가) 맞습니까?',
-                style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-                    color: Color(0xff595B5C),
+                //   child: Text('이(가) 맞습니까?',
+                // style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                // fontSize: 20,
+                //     color: Color(0xff595B5C),
+                // ),
+                //       textAlign: TextAlign.center
+                //   ),
                 ),
-                      textAlign: TextAlign.center
-                  ),
-                ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        if(widget.index+1==widget.subwaySt.length){
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (context) => SubwayAssistant3()));
-                        }
-                        else{
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => SubwayAssistant(widget.index+1, widget.subwaySt)));
-
-                         }
-                        },
-                      icon: Image.asset('assets/subway/no.png'),
-                      iconSize: MediaQuery.of(context).size.width * 0.4,
-                    ),
                     IconButton(
                       onPressed: () async {
                         List<dynamic> outerElevator=await getOuterElevatorPosition(widget.index, widget.subwaySt);
@@ -158,7 +162,28 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                       },
                       icon: Image.asset('assets/subway/yes.png'),
                       iconSize: MediaQuery.of(context).size.width * 0.4,
+                        //padding: EdgeInsets.zero,
+                      //constraints: BoxConstraints(),
                     ),
+                    IconButton(
+                      onPressed: () {
+                        if(widget.index+1==widget.subwaySt.length){
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                              builder: (context) => SubwayAssistant3()));
+                        }
+                        else{
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => SubwayAssistant(widget.index+1, widget.subwaySt)));
+
+                         }
+                        },
+                      icon: Image.asset('assets/subway/no.png'),
+                      iconSize: MediaQuery.of(context).size.width * 0.4,
+                        //padding: EdgeInsets.zero,
+                      //constraints: BoxConstraints(),
+
+                    ),
+
                   ],
                 ),
               ]),

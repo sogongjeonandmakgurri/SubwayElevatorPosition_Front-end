@@ -23,16 +23,16 @@ class _SubwayAssistantState extends State<SubwayAssistant4> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: Colors.white,
+          color: Colors.black,
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xffD7D7FD),
         title: Text(
           // 앱 이름 수정
           '역에서 가까운 엘레베이터 위치',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),

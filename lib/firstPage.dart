@@ -86,7 +86,7 @@ class _FirstPageState extends State<FirstPage> {
                   SizedBox(width: 60,),
                   IconButton(
                     onPressed: () async {
-                      LocationPermission permission = await Geolocator.requestPermission();
+                      LocationPermission permission = await Geolocator.requestPermission();  // 허가
 
                       // print('실행되나?');
                       //스프링부트랑 연결
@@ -134,28 +134,30 @@ class _FirstPageState extends State<FirstPage> {
 
 
 Future<List<dynamic>> getPosition() async {
+  // 현재 지하철역 위치 가져오기 (현재 위치에서 가까운 역들을 리스트로 가져오기)
+  //
   LocationPermission permission = await Geolocator.requestPermission();
   Position currentPosition = await Geolocator
       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);  // 스프링부트 연결해서 장소 가져오기
   print(currentPosition.latitude);
 
-  String url='http://52.79.206.73:8080/api/subway/loc';
+  String url='http://52.79.206.73:8080/api/subway/loc';  // 퍼블릭 주소 접근
 
   print({
     'lat' : currentPosition.latitude,
     'lng' : currentPosition.longitude
   });
-  // Map data = { 'lat' : currentPosition.latitude,
-  //  'lng' : currentPosition.longitude};
-  Map data = { 'lat' : 37.49464868076315,
-    'lng' : 126.95864607740343 };  // 숭실대입구 근처
+  Map data = { 'lat' : currentPosition.latitude,
+   'lng' : currentPosition.longitude};  // 현재 위치 위도, 경도
+  // Map data = { 'lat' : 37.49464868076315,
+  //   'lng' : 126.95864607740343 };  // 숭실대입구 근처
 
-  var body = json.encode(data);
+  var body = json.encode(data);  // json 타입으로 변경 (http body로 넘겨줄 데이터)
 
-  var response=await http.post(Uri.parse(url), headers: {"Content-Type": "application/json"},  body: body);
+  var response=await http.post(Uri.parse(url), headers: {"Content-Type": "application/json"},  body: body);  // PostMapping
   String responseBody = utf8.decode(response.bodyBytes);
 
-  List<dynamic> list = jsonDecode(responseBody);
+  List<dynamic> list = jsonDecode(responseBody);  // json 타입의 객체 -> list 타입으로 가져오기 (호선 line, 역이름 sub_name)
 
   return list;
 }

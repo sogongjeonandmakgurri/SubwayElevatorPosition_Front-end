@@ -199,22 +199,22 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
 
 
 Future<List<dynamic>> getOuterElevatorPosition(int index, List<dynamic> subwaySt) async {  // 출구측 엘리베이터 위치
-  String url='http://52.79.206.73:8080/api/elevator/in';
+  String url='http://52.79.206.73:8080/api/elevator/in';  // 출구측(외부) 엘리베이터 위치
 
   Map data = { 'line' :  subwaySt[index]['line'],
-    'sub_name' : subwaySt[index]['sub_name'] };
+    'sub_name' : subwaySt[index]['sub_name'] };  // 호선, 역이름
   var body = json.encode(data);
 
   var response=await http.post(Uri.parse(url), headers: {"Content-Type": "application/json"},  body: body);
   String responseBody = utf8.decode(response.bodyBytes);
 
-  List<dynamic> list = jsonDecode(responseBody);
+  List<dynamic> list = jsonDecode(responseBody);  // 엘리베이터 위치 (elevator_loc)
 
   return list;
 }
 
 Future<List<dynamic>> getInnerElevatorPosition(int index, List<dynamic> subwaySt) async {  // 상행/하행/외선/내선
-  String url='http://52.79.206.73:8080/api/elevator/out';
+  String url='http://52.79.206.73:8080/api/elevator/out';  // 내부 엘리베이터 위치
 
   Map data = { 'line' :  subwaySt[index]['line'],
     'sub_name' : subwaySt[index]['sub_name'] };
@@ -223,7 +223,7 @@ Future<List<dynamic>> getInnerElevatorPosition(int index, List<dynamic> subwaySt
   var response=await http.post(Uri.parse(url), headers: {"Content-Type": "application/json"},  body: body);
   String responseBody = utf8.decode(response.bodyBytes);
 
-  List<dynamic> list = jsonDecode(responseBody);
+  List<dynamic> list = jsonDecode(responseBody); // 다음역, 엘리베이터 위치(next_sub_name, elevator_loc)
 
   return list;
 }

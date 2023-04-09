@@ -1,18 +1,22 @@
+<aside>
+📱 **‘지하철 엘리베이터 찾기’ 앱의 개발환경 기능**
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=EBEDF2&height=100&section=header&text=Design_%20UI%20UX%20GUI&fontSize=20" />
+</aside>
 
+> 교통 약자 서비스
+> 
+- Frontend: Flutter, Dart
+- Backend: Spring Boot, JAVA
+- 현재 위치에서 가장 가까운 지하철역 제공 기능
+- 지하철역의 엘리베이터 위치 제공 기능
 
-#### ⚒TOOLS
-<img src="https://img.shields.io/badge/adobe AI-69788C?style=flat-square&logo=tool&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/adobe PS-556273?style=flat-square&logo=tool&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/adobe XD-0F6DBF?style=flat-square&logo=tool&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/RIVE-0D0D0D?style=flat-square&logo=tool&logoColor=FFFFFF"/>
+<aside>
+📱 **UI 디자인**
 
+</aside>
 
-#### 💙CLICK HERE💙
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ea4290f7-0df7-4395-9f39-768c74756712/Untitled.jpeg)
 
-#### Kiosk
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a907100b-8498-4242-8208-2ea5b72de612/Untitled.jpeg)
 
-#### Elevator
-
-#### Memo _planner ocr
-
-
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=AAA7F2&height=180&section=footer)
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4f2a080-73a8-42dd-ad12-0ba10b9d4913/Untitled.jpeg)

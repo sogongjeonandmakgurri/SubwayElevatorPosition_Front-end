@@ -1,11 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:kiosk/Kiosk/subwayAs2.dart';
 import 'package:kiosk/Kiosk/subwayAs3.dart';
 import 'package:kiosk/Kiosk/subwayAs4.dart';
-import 'package:kiosk/firstPage.dart';
 import 'package:rive/rive.dart';
 import 'package:http/http.dart' as http;
 
@@ -61,7 +59,6 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      //color: Color(0xff595B5C),
                       color: Colors.black
                     ),
                       textAlign: TextAlign.center
@@ -83,7 +80,7 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 21,
+                          width: 20,
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,27 +93,24 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                               "${widget.subwaySt[widget.index]['sub_name']}",  // 숭실대학교
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  fontSize: MediaQuery.of(context).size.width * 0.07,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: 10,
                             ),
                             Text(
-                              "${widget.subwaySt[widget.index]['line']}"+"호선",  // 호선
+                              "${widget.subwaySt[widget.index]['line']}호선",  // 호선
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: MediaQuery.of(context).size.width * 0.07,
                                   fontWeight: FontWeight.bold),
                             ),
-                            // SizedBox(
-                            //   height: 180,
-                            // ),
                             Spacer(flex: 2),
                             Text('이(가) 맞습니까?',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                                  fontSize: MediaQuery.of(context).size.width * 0.07,
                                   //color: Color(0xff595B5C),
                                   color: Colors.black,
                                 ),
@@ -126,13 +120,9 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                         ),
                       ],
                     ),
-                    //width: MediaQuery.of(context).size.width * 0.9,
 
                   ),
                 ]),
-                SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.1,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -154,8 +144,7 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                       },
                       icon: Image.asset('assets/subway/yes.png'),
                       iconSize: MediaQuery.of(context).size.width * 0.4,
-                        //padding: EdgeInsets.zero,
-                      //constraints: BoxConstraints(),
+
                     ),
                     IconButton(
                       onPressed: () {

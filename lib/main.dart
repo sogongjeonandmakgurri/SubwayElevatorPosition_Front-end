@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiosk/splashScreen.dart';
 
-import 'firstPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

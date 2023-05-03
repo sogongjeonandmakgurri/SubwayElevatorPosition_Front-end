@@ -1,14 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:kiosk/recommendSubwayStation.dart';
 
-import 'Kiosk/subwayAs.dart';
-import 'Kiosk/subwayAs3.dart';
-import 'firstPage.dart';
-import 'package:http/http.dart' as http;
 
 class SplashScreen extends StatefulWidget {
   @override

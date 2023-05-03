@@ -131,15 +131,7 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                   ),
                 ]),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                //   child: Text('이(가) 맞습니까?',
-                // style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                // fontSize: 20,
-                //     color: Color(0xff595B5C),
-                // ),
-                //       textAlign: TextAlign.center
-                //   ),
+                  width: MediaQuery.of(context).size.height * 0.1,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

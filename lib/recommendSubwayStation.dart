@@ -110,6 +110,7 @@ class _RecommendSubwayStationState extends State<RecommendSubwayStation> {
 
 
 Future<List<dynamic>> getPosition() async {
+  LocationPermission permission = await Geolocator.requestPermission();
   Position currentPosition = await Geolocator
       .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);  // 스프링부트 연결해서 장소 가져오기
   print(currentPosition.latitude);

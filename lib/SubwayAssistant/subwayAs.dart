@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kiosk/Kiosk/subwayAs2.dart';
-import 'package:kiosk/Kiosk/subwayAs3.dart';
-import 'package:kiosk/Kiosk/subwayAs4.dart';
+import 'package:kiosk/SubwayAssistant/subwayAs2.dart';
+import 'package:kiosk/SubwayAssistant/subwayAs3.dart';
+import 'package:kiosk/SubwayAssistant/subwayAs4.dart';
 import 'package:rive/rive.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,95 +39,86 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
         ),
       ),
 
-      body:
-      SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+      body:SingleChildScrollView(
 
-              Column(children: [
+        child: Column (
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
 
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
-                    '현재 위치',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.black
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                Column(children: [
+
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                        '현재 위치',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.black
+                        ),
+                        textAlign: TextAlign.center
                     ),
-                      textAlign: TextAlign.center
                   ),
-                ),
 
-                Stack(children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.width,
-                    child: RiveAnimation.asset(
-                      'assets/subway/subway_line0'+widget.subwaySt[widget.index]['line'].toString()+'.riv',
-                    ),
+                    child: Stack(
+                        children: [
+                          RiveAnimation.asset(
+                            'assets/subway/subway_line0'+widget.subwaySt[widget.index]['line'].toString()+'.riv',
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: MediaQuery.of(context).size.width*0.4,),
+                                  Text(
+                                    "${widget.subwaySt[widget.index]['sub_name']}",  // 숭실대학교
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: MediaQuery.of(context).size.width * 0.07,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "${widget.subwaySt[widget.index]['line']}호선",  // 호선
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: MediaQuery.of(context).size.width * 0.07,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: MediaQuery.of(context).size.width*0.15,),
+                                  Text('이(가) 맞습니까?',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: MediaQuery.of(context).size.width * 0.07,
+                                      //color: Color(0xff595B5C),
+                                      color: Colors.black,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.width,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Spacer(flex: 2),
-                            SizedBox(
-                              height: 27,
-                            ),
-                            Text(
-                              "${widget.subwaySt[widget.index]['sub_name']}",  // 숭실대학교
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width * 0.07,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "${widget.subwaySt[widget.index]['line']}호선",  // 호선
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width * 0.07,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Spacer(flex: 2),
-                            Text('이(가) 맞습니까?',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: MediaQuery.of(context).size.width * 0.07,
-                                  //color: Color(0xff595B5C),
-                                  color: Colors.black,
-                                ),
-                                textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-
-                  ),
-                ]),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () async {
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () async {
                         List<dynamic> outerElevator=await getOuterElevatorPosition(widget.index, widget.subwaySt);
                         List<dynamic> innerElevator=await getInnerElevatorPosition(widget.index, widget.subwaySt);
                         print(outerElevator);
@@ -140,14 +131,13 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                           Navigator.of(context).pushReplacement(MaterialPageRoute(
                               builder: (context) => SubwayAssistant2(widget.index,widget.subwaySt[widget.index]['line'], outerElevator, innerElevator)));
                         }
+                        },
+                        icon: Image.asset('assets/subway/yes.png'),
+                        iconSize: MediaQuery.of(context).size.width * 0.3,
 
-                      },
-                      icon: Image.asset('assets/subway/yes.png'),
-                      iconSize: MediaQuery.of(context).size.width * 0.4,
-
-                    ),
-                    IconButton(
-                      onPressed: () {
+                      ),
+                      IconButton(
+                        onPressed: () {
                         if(widget.index+1==widget.subwaySt.length){
                           Navigator.of(context).pushReplacement(MaterialPageRoute(
                               builder: (context) => SubwayAssistant3()));
@@ -157,22 +147,24 @@ class _SubwayAssistantState extends State<SubwayAssistant> {
                             builder: (context) => SubwayAssistant(widget.index+1, widget.subwaySt)));
 
                          }
+
                         },
-                      icon: Image.asset('assets/subway/no.png'),
-                      iconSize: MediaQuery.of(context).size.width * 0.4,
+                        icon: Image.asset('assets/subway/no.png'),
+                        iconSize: MediaQuery.of(context).size.width * 0.3,
                         //padding: EdgeInsets.zero,
-                      //constraints: BoxConstraints(),
+                        //constraints: BoxConstraints(),
 
-                    ),
+                      ),
 
-                  ],
-                ),
-              ]),
-            ],
-          )
-        ],
+                    ],
+                  ),
+                ]),
+              ],
+            )
+          ],
+        ),
       ),
-      ),
+      
     );
   }
 }

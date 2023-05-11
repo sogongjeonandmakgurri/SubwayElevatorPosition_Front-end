@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:kiosk/Kiosk/subwayAs.dart';
-import 'package:kiosk/Kiosk/subwayAs3.dart';
+import 'package:kiosk/SubwayAssistant/subwayAs.dart';
+import 'package:kiosk/SubwayAssistant/subwayAs3.dart';
 import 'package:http/http.dart' as http;
 
 class RecommendSubwayStation extends StatefulWidget {
